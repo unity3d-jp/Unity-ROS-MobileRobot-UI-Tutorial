@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="raspberry-pi-mouse%E4%BD%8D%E7%BD%AE%E5%A7%BF%E5%8B%A2%E3%81%AE%E5%8F%AF%E8%A6%96%E5%8C%96">Raspberry Pi Mouse位置姿勢の可視化</h1>
+<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
+<p>Gazebo上のロボットの位置姿勢を取得し、Unity上に反映させる方法を紹介します。</p>
+<p>本ステップ実行後の状態のSceneファイルは<a href="../MobileRobotUITutorialProject/Assets/Scenes/Step4.unity"><code>MobileRobotUITutorialProject/Assets/Scenes/Step4.unity</code></a>から入手できます。</p>
+<h2 id="%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D%E6%B8%88%E7%92%B0%E5%A2%83">動作確認済環境</h2>
+<ul>
+<li>Windows 10 Home バージョン 20H2</li>
+<li>Unity 2020.3.17f</li>
+<li><a href="https://github.com/Unity-Technologies/ROS-TCP-Connector">Unity-Technologies/ROS-TCP-Connector</a> v0.5.0</li>
+</ul>
+<h2 id="%E6%89%8B%E9%A0%86">手順</h2>
+<h3 id="1-ros%E3%83%88%E3%83%94%E3%83%83%E3%82%AF%E3%81%AE%E3%82%B5%E3%83%96%E3%82%B9%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E7%99%BB%E9%8C%B2">1. ROSトピックのサブスクライバスクリプトの登録</h3>
+<p>ROSから配信されるトピックを受信するために、サブスクライバをUnityに登録します。</p>
+<p>Hierarchyウィンドウを右クリックして<code>Create Empty</code>を選択し、<code>Subscriber</code>としてGameObjectを作成します。</p>
+<p><img src="./images/step4-5.png" alt=""></p>
+<p>作成した<code>Subscriber</code>オブジェクトに<code>Assets/Scripts/TfSubscriber.cs</code>スクリプトをアタッチします。<br>
+（<code>Hierarchy</code>ウィンドウからGameObjectを選択してInspectorウィンドウ上で任意のスクリプト コンポーネントを追加することも可能です。）</p>
+<p><img src="./images/step4-6.gif" alt=""></p>
+<p>Inspectorウィンドウで<code>Tf Subscriber</code>コンポーネントの<code>Mobile Robot</code>に<code>raspimouse</code>オブジェクトを指定します。</p>
+<p><img src="./images/step4-7.gif" alt=""></p>
+<p>以上でROSから配信されるロボットの位置姿勢を受信してUnity上のロボットに反映させる準備ができました。</p>
+<h3 id="2-unity%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C">2. Unityプロジェクトの実行</h3>
+<p><a href="./step3.md">STEP3</a>と同様に、</p>
+<ol>
+<li>再生モードでUnityプロジェクトを実行</li>
+<li>Gazeboシミュレータを起動</li>
+<li>操作ボタンから移動指令送信</li>
+</ol>
+<p>の手順でロボットを動かしてみます。</p>
+<p><img src="./images/step4-8.gif" alt=""></p>
+<p><a href="./step3.md">STEP3</a>までは操作ボタンを押した際にGazebo上のロボットが移動するだけでしたが、Gazebo上の移動ロボットに合わせてUnityのロボットも動かすことができました。
+操作ボタンを使わなくてもGazebo上でロボットを動かすことでも反映されます。</p>
+<p><img src="./images/step4-9.gif" alt=""></p>
+<p>Consoleを見ると位置姿勢の受信結果と座標変換のデバッグログを確認できます。<br>
+ROSとUnityでは座標系が異なるため、この差分を吸収するために<code>TfSubscriber.cs</code>スクリプト内で座標変換をしています。
+座標変換については次の「位置姿勢の表現方法とROSとUnityにおける座標系の違い」を参照してください。</p>
+<h2 id="%E4%BD%8D%E7%BD%AE%E5%A7%BF%E5%8B%A2%E3%81%AE%E8%A1%A8%E7%8F%BE%E6%96%B9%E6%B3%95%E3%81%A8ros%E3%81%A8unity%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%BA%A7%E6%A8%99%E7%B3%BB%E3%81%AE%E9%81%95%E3%81%84">位置姿勢の表現方法とROSとUnityにおける座標系の違い</h2>
+<h3 id="%E4%BD%8D%E7%BD%AE%E3%81%AE%E8%A1%A8%E7%8F%BE%E6%96%B9%E6%B3%95">位置の表現方法</h3>
+<p>ロボットの位置を表現するには原点を基準にした前後、左右、上下方向の距離を用います。例えば下図のように原点から見たロボット位置を前後、左右、上下の順に書くと(4,2,0)と表現できます。このように数値で表現された位置を座標、表現方法の決まりごとを座標系といいます。ちなみに今回用いる座標系は3つの方向がそれぞれ直角に交わっているため直交座標系とよばれています。</p>
+<p><img src="./images/step4-99.png" alt=""></p>
+<h3 id="%E5%A7%BF%E5%8B%A2%E3%81%AE%E8%A1%A8%E7%8F%BE%E6%96%B9%E6%B3%95">姿勢の表現方法</h3>
+<p>ロボットの姿勢はクォータニオンとよばれる形式が用いられます。位置と同じように回転する軸の方向を3つの要素で表現し、回転量をもう1つの要素で表現する方法です。これは人の直感的な認識に沿わないので数値を見ても姿勢を想像することが難しいのですが、コンピュータ上で処理する際にとても便利な形式になっています。クォータニオンの値を人が直接扱うことはあまりないためわからなくても問題ありません。クォータニオンはこのような祭りが開催されるほどステップアップのための重要なテーマになっています。</p>
+<ul>
+<li><a href="https://learning.unity3d.jp/5830/">納涼クォータニオン夏祭り | Unity Learning Materials</a></li>
+</ul>
+<h3 id="unity%E3%81%A8ros%E3%81%AE%E5%BA%A7%E6%A8%99%E7%B3%BB%E3%81%AE%E9%81%95%E3%81%84">UnityとROSの座標系の違い</h3>
+<p>UnityもROSもロボット位置にx,y,zの3つ、姿勢の場合はx,y,z,wの4つの変数が割り当てていますが、それぞれの座標系で変数と方向の対応が異なる点に注意する必要があります。Unity座標系におけるx,y,zはそれぞれ右、上、前方向に対応していますが、ROS座標系では前、左、上の順で対応しています。</p>
+<p><img src="./images/step4-100.png" alt=""></p>
+<p>UnityとROSの座標系の変換を変数で表現してみます。Unity座標系における位置(x,y,z)がROS座標系では(z,−x,y)、ROS座標系における位置(x,y,z)がUnity座標系では(−y,z,x)となります。姿勢も位置と同様にUnity座標系における姿勢(x,y,z,w)がROS座標系では(z,-x,y,-w)、ROS座標系における姿勢(x,y,z,w)がUnity座標系では(-y,z,x,-w)になります。非常にややこしいのですが変換のコードさえ書いてしまえば毎回考える必要はありません。今回の説明を読んでピンとこない方もUnityとROSの間では何かしら変換が必要であることだけを意識していただければ問題ないです。</p>
+<p><img src="./images/step4-101.png" alt=""></p>
+<h3 id="%E6%9C%ACstep%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">本STEPのまとめ</h3>
+<p>Gazebo上のロボットの位置姿勢をUnity上で表示じて可視化する方法とその確認方法を紹介しました。
+またUnityとROSの座標系の違いについても紹介しました。</p>
+<p>次は<a href="./step5.md">STEP5</a>でロボットのオドメトリを可視化する方法を紹介します。</p>
+<hr>
+<ul>
+<li><a href="./intro2.md">目次</a></li>
+<li><a href="./step3.md">STEP3</a></li>
+<li><a href="./step5.md">STEP5</a></li>
+</ul>
+
+</body>
+</html>

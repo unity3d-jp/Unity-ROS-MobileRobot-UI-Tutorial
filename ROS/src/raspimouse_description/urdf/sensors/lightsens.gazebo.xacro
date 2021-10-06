@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="lightsensor_gazebo" params="prefix base_rad rad_range min_range max_range robotdescription_namespace robot_namespace">
+    <gazebo reference="${prefix}_lightsensor_link">
+      <material>Gazebo/Gray</material>
+      <sensor type="ray" name="${prefix}_lightsensor">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>false</visualize>
+        <update_rate>20</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>${base_rad-rad_range/2}</min_angle>
+              <max_angle>${base_rad+rad_range/2}</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>${min_range}</min>
+            <max>${max_range}</max>
+            <resolution>0.001</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_${prefix}_lightsensor_controller" filename="libgazebo_ros_laser.so">
+          <robotNamespace>${robot_namespace}</robotNamespace>
+          <topicName>${prefix}_scan</topicName>
+          <frameName>${robotdescription_namespace}${prefix}</frameName>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

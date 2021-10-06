@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot name="urg_sensor" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find raspimouse_description)/urdf/sensors/lidar.gazebo.xacro"/>
+
+  <xacro:macro name="lidar_urg_sensor" params="sensor_link_name parent *joint_origin">
+    <joint name="${sensor_link_name}_joint" type="fixed">
+      <xacro:insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="${sensor_link_name}"/>
+    </joint>
+
+    <link name="${sensor_link_name}">
+      <visual>
+        <geometry>
+          <mesh filename="package://raspimouse_description/meshes/dae/sensor/urg_optical_axis_center_origin.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://raspimouse_description/meshes/dae/sensor/urg_optical_axis_center_origin.dae"/> -->
+        <!-- </geometry> -->
+        <origin xyz="0 0 -0.01815" />
+        <geometry>
+          <cylinder radius="0.025" length="0.070"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.160" />
+        <origin xyz="0 0 0" />
+        <xacro:cylinder_inertia m="0.16" r="0.025" h="0.07" />
+      </inertial>
+    </link>
+  </xacro:macro>
+</robot>

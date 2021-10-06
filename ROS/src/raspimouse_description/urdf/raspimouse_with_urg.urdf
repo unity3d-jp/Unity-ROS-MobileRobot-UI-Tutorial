@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<robot name="raspimouse">
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.00185"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <link name="base_link">
+     <visual>
+      <geometry>
+        <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_body.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0 0.0425 0.02215" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/> 
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+  </joint>
+  
+  <link name="left_wheel_link">
+     <visual>
+      <geometry>
+        <mesh filename="package://raspimouse_description/meshes/dae/wheel/raspimouse_wheel.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0 -0.0425 0.02215" rpy="1.57 0 0"/>
+    <axis xyz="0 0 1"/> 
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+  </joint>
+  
+  <link name="right_wheel_link">
+     <visual>
+      <geometry>
+        <mesh filename="package://raspimouse_description/meshes/dae/wheel/raspimouse_wheel.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="urg_mount_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="urg_mount_link"/>
+  </joint>
+  
+  <link name="urg_mount_link">
+     <visual>
+      <geometry>
+        <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_top_plate.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="urg_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.14060" rpy="0 0 0" />
+    <parent link="urg_mount_link"/>
+    <child link="lidar_link"/>
+  </joint>
+  
+  <link name="lidar_link">
+     <visual>
+      <geometry>
+        <mesh filename="package://raspimouse_description/meshes/dae/sensor/urg_optical_axis_center_origin.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+</robot>

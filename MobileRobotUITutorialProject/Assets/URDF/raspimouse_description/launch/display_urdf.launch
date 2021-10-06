@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- arguments -->
+  <arg name="model" default="$(find raspimouse_description)/urdf/raspimouse.urdf" />
+  <arg name="rvizconfig" default="$(find raspimouse_description)/launch/config/urdf.rviz" />
+  <arg name="gui" default="True" />
+  <!-- prameters -->
+  <param name="robot_description" textfile="$(arg model)" />
+  <param name="use_gui" value="$(arg gui)" />
+  <rosparam param="source_list">["joint_states_source"]</rosparam>
+  <!-- nodes -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" if="$(arg gui)" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" unless="$(arg gui)" />
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>

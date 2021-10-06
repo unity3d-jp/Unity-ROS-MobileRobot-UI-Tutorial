@@ -1,0 +1,27 @@
+FROM tiryoh/ros-desktop-vnc:melodic
+
+ENV ROS_WORKSPACE=/home/ubuntu/catkin_ws
+
+RUN apt-get update -q && \
+    apt-get install -y dos2unix ros-melodic-joint-state-publisher-gui && \
+    rm -rf /var/lib/apt/lists/*
+
+USER ubuntu
+RUN mkdir -p $ROS_WORKSPACE
+
+COPY --chown=ubuntu:ubuntu ./src/ros_tcp_endpoint $ROS_WORKSPACE/src/ros_tcp_endpoint
+COPY --chown=ubuntu:ubuntu ./src/tf2_msgs $ROS_WORKSPACE/src/tf2_msgs
+COPY --chown=ubuntu:ubuntu ./src/raspimouse_sim $ROS_WORKSPACE/src/raspimouse_sim
+COPY --chown=ubuntu:ubuntu ./src/raspimouse_description $ROS_WORKSPACE/src/raspimouse_description
+COPY --chown=ubuntu:ubuntu ./configure.sh /home/ubuntu/configure.sh
+
+RUN cd ${ROS_WORKSPACE} && \
+    /bin/bash -c "find $ROS_WORKSPACE -type f -print0 | xargs -0 dos2unix" && \
+    dos2unix $HOME/configure.sh && \
+    . /opt/ros/melodic/setup.sh && \
+    catkin init && \
+    catkin build && \
+    echo ". \$HOME/catkin_ws/devel/setup.bash" >> /home/ubuntu/.bashrc && \
+    echo ". \$HOME/configure.sh" >> /home/ubuntu/.bashrc
+
+USER root

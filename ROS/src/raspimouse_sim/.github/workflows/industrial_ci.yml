@@ -1,0 +1,36 @@
+name: industrial_ci
+
+on:
+  push:
+    paths-ignore:
+    - 'docs/**'
+    - '**.md'
+  pull_request:
+    paths-ignore:
+    - 'docs/**'
+    - '**.md'
+  schedule:
+    - cron: "0 1 * * 2" # Weekly on Tuesdays at 01:00(GMT)
+
+env:
+  UPSTREAM_WORKSPACE: .ci.rosinstall
+
+jobs:
+  industrial_ci:
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        env:
+          - { ROS_DISTRO: kinetic, ROS_REPO: main }
+          - { ROS_DISTRO: melodic, ROS_REPO: main }
+        experimental: [false]
+        include:
+          - env: { ROS_DISTRO: kinetic, ROS_REPO: testing }
+            experimental: true
+          - env: { ROS_DISTRO: melodic, ROS_REPO: testing }
+            experimental: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: "ros-industrial/industrial_ci@master"
+        env: ${{ matrix.env }}

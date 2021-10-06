@@ -1,0 +1,5 @@
+int16 left_hz
+int16 right_hz
+uint32 duration_ms
+---
+bool success
