@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="lidar_urg_mount" params="prefix parent *joint_origin">
+    <joint name="${prefix}_joint" type="fixed">
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}_link" />
+    </joint>
+    <link name="${prefix}_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_top_plate.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_top_plate.dae" /> -->
+        <!-- </geometry> -->
+        <origin rpy="0 0 0" xyz="0.005 0 0.0435" />
+        <geometry>
+          <box size="0.117 0.080 0.087" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0.07" />
+        <mass value="0.04"/>
+        <xacro:box_inertia m="0.04" x="0.13" y="0.1" z="0.002" />
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="camera_mount" params="prefix parent *joint_origin">
+    <joint name="${prefix}_joint" type="fixed">
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}_link" />
+    </joint>
+    <link name="${prefix}_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_camera_mount.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <!-- <geometry> -->
+        <!-- <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_camera_mount.dae" /> -->
+        <!-- </geometry> -->
+        <origin rpy="0 0 0" xyz="-0.006 0 0" />
+        <geometry>
+          <box size="0.03 0.068 0.0016" />
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+
+</robot>

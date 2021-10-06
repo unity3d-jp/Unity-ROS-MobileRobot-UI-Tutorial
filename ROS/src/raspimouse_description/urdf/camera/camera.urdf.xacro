@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="light_sensor" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find raspimouse_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/camera/camera.gazebo.xacro" />
+
+  <xacro:macro name="webcam" params="prefix parent *joint_origin">
+    <joint name="${prefix}_joint" type="fixed">
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}_link" />
+    </joint>
+
+    <link name="${prefix}_link">
+      <visual>
+        <geometry>
+          <box size="0.01 0.03 0.02" />
+        </geometry>
+        <material name="Black" />
+      </visual>
+    </link>
+
+    <joint name="${prefix}_lense_joint" type="fixed">
+      <origin xyz="0.005 0 0" rpy="0 1.57 0" />
+      <parent link="${prefix}_link" />
+      <child link="${prefix}_lense_link" />
+    </joint>
+
+    <link name="${prefix}_lense_link">
+      <origin rpy="0 0 " />
+      <visual>
+        <geometry>
+          <cylinder radius="0.005" length="0.001"/>
+        </geometry>
+        <material name="White">
+          <color rgba="1.0 1.0 1.0 2.0"/>
+        </material>
+      </visual>
+    </link>
+
+  </xacro:macro>
+</robot>

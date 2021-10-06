@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<robot name="raspimouse_on_gazebo"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="lidar" default="none" />
+  <xacro:arg name="lidar_frame" default="laser" />
+  <xacro:arg name="laser_visual" default="true"/>
+  <xacro:arg name="camera" default="false" />
+  <xacro:arg name="camera_visual" default="false"/>
+  <xacro:arg name="gazebo_plugin" default="false" />
+  <xacro:arg name="tf" default="true" />
+  <xacro:arg name="jointstate" default="true" />
+  <xacro:arg name="robot_namespace" default="/" />
+  <xacro:arg name="diffdrive_namespace" default="/" />
+  <xacro:arg name="camera_namespace" default="/" />
+  <xacro:arg name="sensor_namespace" default="raspimouse_on_gazebo" />
+
+  <xacro:include filename="$(find raspimouse_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/body/body.urdf.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/body/option.urdf.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/wheel/wheel.urdf.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/wheel/diffdrive.gazebo.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/sensors/lightsens.urdf.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/sensors/lidar.urdf.xacro" />
+  <xacro:include filename="$(find raspimouse_description)/urdf/camera/camera.urdf.xacro" />
+
+  <!-- =============== Link & Joint =============== -->
+  <!-- Base -->
+  <link name="base_footprint" />
+
+  <xacro:base parent="base_footprint">
+    <origin xyz="0 0 0.00185" />
+  </xacro:base>
+
+  <!-- Wheel -->
+  <xacro:wheel prefix="right" parent="base_link">
+    <origin xyz="0 -0.0425 0.02215" rpy="1.57 0 0" />
+    <axis xyz="0 0 -1" />
+  </xacro:wheel>
+  <xacro:wheel prefix="left" parent="base_link">
+    <origin xyz="0 0.0425 0.02215" rpy="-1.57 0 0" />
+    <axis xyz="0 0 1" />
+  </xacro:wheel>
+
+  <!-- Sensors -->
+  <link name="lightsensors" />
+  <joint name="lightsensors_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="lightsensors" />
+  </joint>
+
+  <xacro:light_sensor prefix="rf" parent="lightsensors">
+    <origin xyz="0.04 -0.045 0.032" rpy="0 0 0" />
+  </xacro:light_sensor>
+
+  <xacro:light_sensor prefix="rs" parent="lightsensors">
+    <origin xyz="0.059 -0.01 0.032" rpy="0 0 -1.04" />
+  </xacro:light_sensor>
+
+  <xacro:light_sensor prefix="ls" parent="lightsensors">
+    <origin xyz="0.059 0.01 0.032" rpy="0 0 1.04" />
+  </xacro:light_sensor>
+
+  <xacro:light_sensor prefix="lf" parent="lightsensors">
+    <origin xyz="0.04 0.045 0.032" rpy="0 0 0" />
+  </xacro:light_sensor>
+
+  <xacro:if value="${'$(arg lidar)' == 'urg'}">
+    <xacro:lidar_urg_mount prefix="urg_mount" parent="base_link">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:lidar_urg_mount>
+    <xacro:lidar_urg_sensor sensor_link_name="$(arg lidar_frame)" parent="urg_mount_link">
+      <origin xyz="0.0 0.0 0.14060" rpy="0 0 0" />
+    </xacro:lidar_urg_sensor>
+  </xacro:if>
+
+  <xacro:if value="$(arg camera)">
+    <xacro:camera_mount prefix="camera_mount" parent="base_link">
+      <origin rpy="0 0 0" xyz="0.085 0 0.0493" />
+    </xacro:camera_mount>
+    <xacro:webcam prefix="webcam" parent="camera_mount_link">
+      <origin xyz="0 0 0.01" rpy="0 0 0" />
+    </xacro:webcam>
+  </xacro:if>
+
+
+  <!-- =============== Gazebo =============== -->
+
+  <xacro:if value="$(arg gazebo_plugin)">
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+    <!-- Sensors -->
+    <xacro:lightsensor_gazebo prefix="rf" base_rad="0"
+      rad_range="0.3" min_range="0.01" max_range="0.6"
+      robot_namespace="$(arg sensor_namespace)"
+      robotdescription_namespace="$(arg robot_namespace)" />
+    <xacro:lightsensor_gazebo prefix="rs" base_rad="-1.04"
+      rad_range="0.3" min_range="0.01" max_range="0.6"
+      robot_namespace="$(arg sensor_namespace)"
+      robotdescription_namespace="$(arg robot_namespace)" />
+    <xacro:lightsensor_gazebo prefix="ls" base_rad="1.04"
+      rad_range="0.3" min_range="0.01" max_range="0.6"
+      robot_namespace="$(arg sensor_namespace)"
+      robotdescription_namespace="$(arg robot_namespace)" />
+    <xacro:lightsensor_gazebo prefix="lf" base_rad="0"
+      rad_range="0.3" min_range="0.01" max_range="0.6"
+      robot_namespace="$(arg sensor_namespace)"
+      robotdescription_namespace="$(arg robot_namespace)" />
+
+    <xacro:if value="${'$(arg lidar)' == 'urg'}">
+      <xacro:lidar_gazebo sensor_link_name="$(arg lidar_frame)" base_rad="0" rad_range="4.71" min_range="0.10" max_range="5.6" />
+    </xacro:if>
+
+    <xacro:if value="$(arg camera)">
+      <xacro:camera_gazebo camera_name="webcam" camera_link="webcam_link"
+        robot_namespace="$(arg camera_namespace)"
+        robotdescription_namespace="/" />
+    </xacro:if>
+
+    <!-- DiffDriveController -->
+    <xacro:diffdrive_gazebo publish_tf="$(arg tf)" publish_jointstate="$(arg jointstate)"
+      robot_namespace="$(arg diffdrive_namespace)" />
+  </xacro:if>
+
+  <raspimouse_on_gazebo/>
+</robot>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot name="csi_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="camera_gazebo" params="camera_name camera_link robot_namespace robotdescription_namespace">
+
+    <gazebo reference="${camera_link}">
+      <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <link name="${camera_link}_tf_origin" />
+
+    <joint name="${camera_link}_tf_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${camera_link}" />
+      <child link="${camera_link}_tf_origin" />
+    </joint>
+
+    <gazebo reference="${camera_link}_tf_origin">
+      <sensor type="camera" name="${camera_name}">
+        <visualize>$(arg camera_visual)</visualize>
+        <update_rate>30.0</update_rate>
+        <camera name="${camera_name}">
+          <pose>0 0 0 0 0 0</pose>
+          <horizontal_fov>1.39626</horizontal_fov> <!-- 80deg -->
+          <image>
+            <width>800</width>
+            <height>600</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.03</near>
+            <far>3</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+
+        <plugin name="camera_controller_${camera_name}" filename="libgazebo_ros_camera.so">
+          <robotNamespace>${robot_namespace}</robotNamespace>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>${camera_name}</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>${robotdescription_namespace}${camera_link}_tf_origin</frameName>
+          <hackBaseline>0.0</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+
+    </gazebo>
+
+  </xacro:macro>
+</robot>

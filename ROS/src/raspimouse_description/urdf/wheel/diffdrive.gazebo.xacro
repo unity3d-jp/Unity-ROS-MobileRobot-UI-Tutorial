@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot name="diffdrive_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find raspimouse_description)/urdf/common.xacro" />
+
+  <xacro:macro name="diffdrive_gazebo" params="publish_tf publish_jointstate robot_namespace">
+    <gazebo>
+      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+        <!-- Name of robot namespace of DiffDriveController -->
+        <robotNamespace>${robot_namespace}</robotNamespace>
+
+        <alwaysOn>true</alwaysOn>
+
+        <updateRate>50</updateRate>
+
+        <!-- Set to true to swap right and left wheels, defaults to true -->
+        <legacyMode>false</legacyMode>
+        <rosDebugLevel>na</rosDebugLevel>
+
+        <!-- Name of left joint, defaults to `left_joint` -->
+        <leftJoint>left_wheel_joint</leftJoint>
+        <!-- Name of right joint, defaults to `right_joint` -->
+        <rightJoint>right_wheel_joint</rightJoint>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
+        <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+        <commandTopic>cmd_vel</commandTopic>
+        <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+        <odometryTopic>odom</odometryTopic>
+        <!-- Odometry frame, defaults to `odom` -->
+        <odometryFrame>odom</odometryFrame>
+        <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+        <odometrySource>world</odometrySource>
+
+        <!-- Phisical wheel params -->
+        <wheelSeparation>${wheel_separation}</wheelSeparation>
+        <wheelDiameter>${wheel_radius*2.0}</wheelDiameter>
+        <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+        <wheelTorque>500</wheelTorque>
+        <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+        <wheelAcceleration>0</wheelAcceleration>
+
+        <!-- Set to true to publish /odom (nav_msgs::Odometry), defaults to true -->
+        <publishTf>${publish_tf}</publishTf>
+        <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+        <publishWheelTF>${publish_tf}</publishWheelTF>
+        <!-- Set to true to publish transforms for the odometry, defaults to true -->
+        <publishOdomTF>${publish_tf}</publishOdomTF>
+        <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+        <publishWheelJointState>${publish_jointstate}</publishWheelJointState>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+</robot>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>raspimouse_gazebo</name>
+  <version>0.1.1</version>
+  <description>The raspimouse_gazebo package</description>
+
+  <maintainer email="shop@rt-net.jp">RT Corporation</maintainer>
+  <author email="tiryoh@gmail.com">Daisuke Sato</author>
+
+  <license>MIT</license>
+
+  <url type="website">https://github.com/rt-net/raspimouse_sim/wiki</url>
+  <url type="repository">https://github.com/rt-net/raspimouse_sim</url>
+  <url type="bugtracker">https://github.com/rt-net/raspimouse_sim/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros_control</depend>
+  <depend>raspimouse_fake</depend>
+  <depend>raspimouse_description</depend>
+  <depend>raspimouse_ros_2</depend>
+  <depend>xacro</depend>
+  <exec_depend>teleop_twist_keyboard</exec_depend>
+
+  <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+  </export>
+</package>

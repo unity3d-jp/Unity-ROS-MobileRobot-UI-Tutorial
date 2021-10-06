@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find raspimouse_description)/urdf/body/body.gazebo.xacro" />
+
+  <xacro:macro name="base" params="parent *joint_origin">
+    <joint name="base_joint" type="fixed">
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="base_link" />
+    </joint>
+    <link name="base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_body.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <!-- <geometry> -->
+          <!-- <mesh filename="package://raspimouse_description/meshes/dae/body/raspimouse_body.dae" /> -->
+        <!-- </geometry> -->
+        <origin rpy="0 0 0" xyz="0.005 0 0.040" />
+        <geometry>
+          <box size="0.117 0.080 0.080" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.7186" />
+        <origin xyz="-0.005075 0.0 0.03" />
+        <xacro:box_inertia m="0.7" x="0.1" y="0.08" z="0.08" />
+        <!-- <origin xyz="-0.005075 -0.000427 0.029879" /> -->
+        <!-- <inertia ixx="0.001238161833" ixy="0.000000904986" iyy="0.001368529369"
+                  ixz="0.000100297310" iyz="0.000022118177" izz="0.000784319117" /> -->
+      </inertial>
+    </link>
+
+  </xacro:macro>
+</robot>

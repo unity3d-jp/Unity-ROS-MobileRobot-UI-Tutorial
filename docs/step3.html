@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>step3.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E6%93%8D%E4%BD%9C%E7%94%A8%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8unity%E3%81%8B%E3%82%89gazebo%E4%B8%8A%E3%81%AE%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E3%81%B8%E9%80%9F%E5%BA%A6%E6%8C%87%E4%BB%A4%E3%82%92%E9%80%81%E4%BF%A1">ロボット操作用ボタンの作成とUnityからGazebo上のロボットへ速度指令を送信</h1>
+<h2 id="%E6%A6%82%E8%A6%81">概要</h2>
+<p>ロボット操作用ボタンの作成からUnityからGazebo上のロボットへ速度指令を送信するまでの手順を紹介します。</p>
+<p>本ステップ実行後の状態のSceneファイルは<a href="../MobileRobotUITutorialProject/Assets/Scenes/Step3.unity"><code>MobileRobotUITutorialProject/Assets/Scenes/Step3.unity</code></a>から入手できます。</p>
+<h2 id="%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D%E6%B8%88%E7%92%B0%E5%A2%83">動作確認済環境</h2>
+<ul>
+<li>Windows 10 Home バージョン 20H2</li>
+<li>Unity 2020.3.17f</li>
+<li><a href="https://github.com/Unity-Technologies/ROS-TCP-Connector">Unity-Technologies/ROS-TCP-Connector</a> v0.5.0</li>
+</ul>
+<h2 id="%E6%89%8B%E9%A0%86">手順</h2>
+<h3 id="1-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%8B%E3%82%89ros-tcp-connector%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">1. パッケージマネージャからROS-TCP-Connectorをインストール</h3>
+<p>パッケージマネージャからROS-TCP-Connectorをインストールします。パッケージマネージャはメニューバーの<code>Window -&gt; Package Manager</code>から開けます。</p>
+<p>左上の＋ボタンから<code>Add package from git URL</code>をクリックします。</p>
+<p><img src="./images/step1-1.png" alt=""></p>
+<p>ROS-TCP-ConnectorのGitリポジトリへのURLを最新のタグを指定して入力し、<code>Add</code>をクリックします。2021年9月現在最新のタグは<code>v0.5.0</code>です。<br>
+この場合のGitリポジトリへのURLは <code>https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector#v0.5.0</code> となります。</p>
+<p>メニューバーに<code>Robotics</code>というメニューが追加されます。メニューバーから<code>Robotics</code> -&gt; <code>ROS Settings</code>を開き、以下の設定となっていることを確認します。</p>
+<ul>
+<li>Connect on Startup: True</li>
+<li>Protocol: ROS1</li>
+<li>ROS IP Address: 127.0.0.1</li>
+<li>ROS Port: 10000</li>
+<li>Show HUD: True</li>
+</ul>
+<p><img src="./images/step3-14.png" alt=""></p>
+<h3 id="2-ros%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BD%9C%E6%88%90">2. ROSのメッセージファイル作成</h3>
+<p>UnityでROSから配信されるロボットの位置姿勢を受信するために、配信されているメッセージの形式をUnityプロジェクトで扱えるようにします。
+ROSで使われている定義ファイルをC#のスクリプトに変換します。</p>
+<p>変換にはROS-TCP-Connectorのメッセージ作成機能を用います。</p>
+<p>なお、この手順は今回のように使うROSのメッセージがROS-TCP-Connectorに予め含まれていない場合にのみ必要です。<br>
+（<a href="./step3.md">STEP3</a>ではROS-TCP-Connectorに予め定義されているROSのメッセージ作成のみ使用しています。<a href="./step4.md">STEP4</a>にて使用するメッセージを先に用意しておきます。）<br>
+<a href="https://github.com/Unity-Technologies/ROS-TCP-Connector/tree/main/com.unity.robotics.ros-tcp-connector/Runtime/Messages"><code>com.unity.robotics.ros-tcp-connector/Runtime/Messages</code></a>から予めUnity用に用意されているROSのメッセージ形式を確認できます。</p>
+<p>メニューバーから<code>Robotics</code> -&gt; <code>Generate ROS Messages...</code>を選択します。</p>
+<p><img src="./images/step4-1.png" alt=""></p>
+<p><code>ROS message path</code>を指定します。
+<a href="../ROS/src"><code>ROS/src</code></a>フォルダを指定します。</p>
+<p><img src="./images/step4-2.png" alt=""></p>
+<p><code>tf2_msgs/msg/TFMessage.msg</code>を選択して<code>Build msg</code>をクリックします。</p>
+<p><img src="./images/step4-3.png" alt=""></p>
+<p>以上でROSのメッセージファイル作成は完了です。Unityプロジェクト内の<code>Assets/RosMessages</code>フォルダに<code>Tf2/msg/TFMessageMsg.cs</code>というスクリプトが作成されています。</p>
+<p><img src="./images/step4-4.png" alt=""></p>
+<h3 id="3-%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E6%93%8D%E4%BD%9C%E7%94%A8%E3%83%9C%E3%82%BF%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90">3. ロボット操作用ボタンを作成</h3>
+<p>Hierarchyウィンドウを右クリックして<code>UI</code>-&gt;<code>Panel</code>を選択します。</p>
+<p><img src="./images/step3-2.png" alt=""></p>
+<p>InspectorウィンドウでPanelの位置とサイズを調整します。
+PanelはGameウィンドウから確認することができます。</p>
+<p><code>Rect Transform</code>コンポーネント左上にある二重の四角をクリックすると
+Panel位置を調整するためのAnchor Presetsが開くので右下寄せになるright-bottomを選択します。</p>
+<p><img src="./images/step3-3.png" alt=""></p>
+<p>Pos X, Pos Y, Pos Z, Width, Heightはそれぞれ-170, 170, 0, 320, 320にします。</p>
+<p><img src="./images/step3-4.png" alt=""></p>
+<p>次にHierarchyウィンドウで<code>Canvas</code>-&gt;<code>Panel</code>を右クリックして<code>UI</code>-&gt;<code>Button</code>を選択し、<code>ButtonForward</code>と名前をつけます。</p>
+<p><img src="./images/step3-5.png" alt="">
+<img src="./images/step3-6.png" alt=""></p>
+<p>InspectorウィンドウでButtonの位置とサイズを調整します。</p>
+<p>Pos X, Pos Y, Pos Z, Width, Heightはそれぞれ0, 100, 0, 100, 100にします。</p>
+<p><img src="./images/step3-7.png" alt=""></p>
+<p>次にHierarchyウィンドウから<code>ButtonForward</code>オブジェクトの子の<code>Text</code>オブジェクトを選択し、Buttonのラベルを「Forward」に修正します。</p>
+<p><img src="./images/step3-8.png" alt=""></p>
+<p>同様にしてBackward, Left, Rightについても作成します。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Button</th>
+<th style="text-align:left">Pos X</th>
+<th style="text-align:left">Pos Y</th>
+<th style="text-align:left">Pos Z</th>
+<th style="text-align:left">Width</th>
+<th style="text-align:left">Height</th>
+<th style="text-align:left">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ButtonForward</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">Foraward</td>
+</tr>
+<tr>
+<td style="text-align:left">ButtonBackward</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">-100</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">Backward</td>
+</tr>
+<tr>
+<td style="text-align:left">ButtonLeft</td>
+<td style="text-align:left">-100</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">Left</td>
+</tr>
+<tr>
+<td style="text-align:left">ButtonRight</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">Right</td>
+</tr>
+</tbody>
+</table>
+<p><img src="./images/step3-9.png" alt=""></p>
+<p>次にHierarchyウィンドウを右クリックして<code>Create Empty</code>を選択し、<code>Publisher</code>としてGameObjectを作成します。</p>
+<p><img src="./images/step3-10.png" alt="">
+<img src="./images/step3-11.png" alt=""></p>
+<h3 id="4-%E6%93%8D%E4%BD%9C%E7%94%A8%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%AB%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%92%E7%99%BB%E9%8C%B2">4. 操作用ボタンにイベントを登録</h3>
+<p>次に作成したボタンにイベントを登録します。</p>
+<p><a href="../UnityScripts/Scripts"><code>UnityScripts/Scripts</code></a>フォルダをUnityプロジェクトの<code>Assets</code>フォルダにコピー（<code>Assets/Scripts</code>として配置）します。</p>
+<p>コピーした<code>Scripts</code>フォルダ内の<code>CmdVelPublisher.cs</code>を先程作成した<code>Publisher</code>オブジェクトにコンポーネントとして追加します。</p>
+<p><img src="./images/step3-12.gif" alt=""></p>
+<p><code>Publisher</code>オブジェクトのInspectorウィンドウを確認すると<code>Cmd Vel Publisher</code>スクリプトが追加されていることを確認できます。ここの<code>Linear Vel</code>が進行方向の基準となる速度、<code>Angular Vel</code>が旋回方向の基準となる角速度となっています。今回はそれぞれを<code>0.5</code>と<code>1.5</code>に設定します。速度の単位はm/s、角速度の単位はrad/sです。</p>
+<p><img src="./images/step3-13.png" alt=""></p>
+<p><code>ButtonForward</code>オブジェクトのInspectorウィンドウの<code>Add Component</code>ボタンから<code>Event Trigger</code>コンポーネントを追加します。</p>
+<p><img src="./images/step3-14.gif" alt=""></p>
+<p><code>Add New Event Type</code>から<code>Pointer Down</code>イベントを追加します。</p>
+<p><img src="./images/step3-15.png" alt=""></p>
+<p><code>Pointer Down</code>イベントのリストを2つに増やし、それぞれに<code>Publisher</code>オブジェクトを指定します。</p>
+<p><img src="./images/step3-16.gif" alt=""></p>
+<p><img src="./images/step3-17.gif" alt=""></p>
+<p>追加した<code>Pointer Down</code>イベントに上から順に<code>CmdVelPublisher.SetForwardVel</code>ファンクションと<code>CmdVelPublisher.Publish</code>ファンクションを指定します。
+このとき<code>CmdVelPublisher.SetForwardVel</code>ファンクションの引数は<code>1</code>を指定します。
+この引数が<code>Publisher</code>オブジェクトのInspectorウィンドウから確認できる基準速度、基準角速度にかける倍率です。
+今回は進行方向の基準速度が<code>0.5</code>、倍率が<code>1.0</code>なので0.5m/sの移動指令を送信することになります。</p>
+<p><img src="./images/step3-18.gif" alt=""></p>
+<p>同様にして<code>Pointer Up</code>イベントに<code>CmdVelPublisher.SetStopVel</code>と<code>CmdVelPublisher.Publish</code>ファンクションを指定します。
+このイベントを登録することでボタンを離したら移動指令を止める（押している間だけ移動指令を出す）ことができるようになります。</p>
+<p><img src="./images/step3-19.png" alt=""></p>
+<p>同様にして各ボタンに移動指令を送信のイベントを登録します。</p>
+<p>繰り返しでイベントを登録する際にはコンポーネントを使いまわしすると楽です。</p>
+<p><code>ButtonForward</code>オブジェクトの<code>Event Trigger</code>コンポーネントのオプションから<code>Copy Component</code>を選びます。</p>
+<p><img src="./images/step3-20.png" alt=""></p>
+<p><code>ButtonBackward</code>オブジェクトに<code>Event Trigger</code>コンポーネントを追加し、オプションから<code>Paste Component Values</code>を選びます。</p>
+<p><img src="./images/step3-21.png" alt=""></p>
+<p><code>Pointer Down</code>イベントの1つ目のファンクションを<code>CmdVelPublisher.SetBackwardVel</code>ファンクションに変更します。</p>
+<p><img src="./images/step3-22.png" alt=""></p>
+<p>以上で2つ目のボタンへのイベント登録は完了です。</p>
+<p>同様にして<code>ButtonLeft</code>オブジェクトと<code>ButtonRight</code>オブジェクトに<code>Event Trigger</code>コンポーネントを追加して設定をコピーし、
+それぞれ<code>CmdVelPublisher.SetLeftTurnVel</code>と<code>CmdVelPublisher.SetRightTurnVel</code>を指定します。</p>
+<p>以上で4つのボタンへのイベントの登録が完了です。</p>
+<h3 id="5-ros%E7%92%B0%E5%A2%83%E3%82%92%E8%B5%B7%E5%8B%95">5. ROS環境を起動</h3>
+<p>PowerShellを起動してDockerコンテナを起動します。</p>
+<pre class="hljs"><code><div>docker run --rm -it -p 10000:10000 -p 5005:5005 -p 6080:80 --shm-size=512m raspimouse-unity:latest
+</div></code></pre>
+<p>以下のメッセージが表示されていればコンテナが無事起動できています。</p>
+<pre class="hljs"><code><div>Listening on http://localhost:6079 (run.py:87)
+</div></code></pre>
+<p><img src="./images/step3-23.png" alt=""></p>
+<p>Webブラウザを開き<a href="http://127.0.0.1:6080">http://127.0.0.1:6080</a>にアクセスします。</p>
+<p><img src="./images/step3-24.png" alt=""></p>
+<h3 id="6-%E5%86%8D%E7%94%9F%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7unity%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E5%AE%9F%E8%A1%8C">6. 再生モードでUnityプロジェクトを実行</h3>
+<p>Unityで再生ボタンを押し、再生モードでプロジェクトを実行します。</p>
+<p><img src="./images/step3-25.png" alt=""></p>
+<p>この状態で操作ボタンの動作確認をしてみます。ボタンを押すと左上の<code>Last Message Sent</code>の欄が更新されているのが確認できます。</p>
+<p><img src="./images/step3-26.gif" alt=""></p>
+<p>この間以下のようなメッセージが出ますが、無視して問題ありません。</p>
+<pre class="hljs"><code><div>Connection to 127.0.0.1:10000 failed - System.Net.Sockets.SocketException (0x80004005): 対象のコンピューターによって拒否されたため、接続できませんでした。
+</div></code></pre>
+<h3 id="7-gazebo%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%82%92%E8%B5%B7%E5%8B%95">7. Gazeboシミュレータを起動</h3>
+<p>先程まで開いていたWebブラウザでLXTerminalを2つ起動します。</p>
+<p><img src="./images/step3-27.png" alt="">
+<img src="./images/step3-28.png" alt=""></p>
+<p>1枚目のLXTerminalで以下のコマンドを実行します。</p>
+<pre class="hljs"><code><div>roslaunch raspimouse_gazebo raspimouse_with_cheeze_maze.launch
+</div></code></pre>
+<p>ブラウザ上の環境にコピー&amp;ペーストする際は
+画面右側の三角のアイコンをクリックし、
+クリップボードアイコンを選択して表示されるテキストボックスに入力することでペーストできるようになります。</p>
+<p><img src="./images/step3-28-1.gif" alt=""></p>
+<p>無事実行できると以下のようにシミュレータが起動します。</p>
+<p><img src="./images/step3-29.png" alt=""></p>
+<p>2枚目のLXTerminalで以下のコマンドを実行します。</p>
+<pre class="hljs"><code><div>roslaunch ros_tcp_endpoint endpoint.launch
+</div></code></pre>
+<h3 id="8-%E6%93%8D%E4%BD%9C%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%8B%E3%82%89%E7%A7%BB%E5%8B%95%E6%8C%87%E4%BB%A4%E9%80%81%E4%BF%A1">8. 操作ボタンから移動指令送信</h3>
+<p>再生モードのUnityでボタンを操作すると移動指令が送信され、Gazebo上のロボットが移動することを確認できます。</p>
+<p><img src="./images/step3-30.gif" alt=""></p>
+<p>このとき、Unity上のロボットは動きません。Unity上のロボットもGazebo上のロボットにあわせて動かせるようにする方法は次の<a href="./step4.md">STEP4</a>にて紹介します。</p>
+<h2 id="%E6%9C%ACstep%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">本STEPのまとめ</h2>
+<p>ロボット操作用ボタンを作成し、UnityからGazebo上のロボットへ速度指令を送信できるようにする方法を紹介しました。さらに実際にGazebo上のロボットを動かすまでを紹介しました。</p>
+<p>次は<a href="./step4.md">STEP4</a>でGazebo上のロボットの位置姿勢を可視化（Unity上に反映）する方法を紹介します。</p>
+<hr>
+<ul>
+<li><a href="./intro2.md">目次</a></li>
+<li><a href="./step2.md">STEP2</a></li>
+<li><a href="./step4.md">STEP4</a></li>
+</ul>
+
+</body>
+</html>

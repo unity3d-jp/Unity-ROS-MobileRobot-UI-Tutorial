@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="speed" default="0.1" />
+  <arg name="turn" default="1.0" />
+  <arg name="cmd_vel" default="/cmd_vel" />
+  <arg name="rvizconfig" default="$(find raspimouse_gazebo)/launch/config/odom.rviz" />
+  <arg name="rviz" default="true" />
+  <node pkg="teleop_twist_keyboard" name="controller" type="teleop_twist_keyboard.py" output="screen"
+        args="cmd_vel:=$(arg cmd_vel) _speed:=$(arg speed) _turn:=$(arg turn)" required="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" if="$(arg rviz)" />
+</launch>
