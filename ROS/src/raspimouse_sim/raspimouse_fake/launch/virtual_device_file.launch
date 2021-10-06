@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <group ns="raspimouse_on_gazebo">
-    <node name="lightsensor_device_file_simulator" pkg="raspimouse_fake" type="virtual_led_sensors.py" output="screen" />
-    <node name="motor_device_file_simulator" pkg="raspimouse_fake" type="virtual_motors.py" output="screen" />
-  </group>
-</launch>
-
