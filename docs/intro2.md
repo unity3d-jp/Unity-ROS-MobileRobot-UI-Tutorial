@@ -73,13 +73,13 @@ OSを入れ替えるわけではないので、デュアルブートの設定を
 
 物理演算や3DCGレンダリング、センサやアクチュエータのシミュレーションができます。ROSと連携するためのプラグインがあるため多くのROS対応ロボットがGazebo用のデータを公開しています。ROSを経由して現実のロボットと同じように通信できるので、シミュレータで動作確認したコードをほぼそのまま現実のロボットで動かすことができます。
 
-### [Raspberry Pi Mouse](https://rt-net.jp/products/raspberrypimousev3/)
+### [Raspberry Pi Mouse](https://rt-net.jp/products/raspberrypimousev3/) (株式会社アールティ製)
 
 ![](./images/intro2-2.png)
 
 本教材で作成したUIで操作するロボットです。
 
-メインボードにRaspberry Piを使った左右独立二輪方式の小型移動プラットフォームロボットです。ROS対応ロボットであり、オープンソースでROSのサンプルプログラムも多数公開しています。
+メインボードに[Raspberry Pi](https://www.raspberrypi.org/)を使った左右独立二輪方式の小型移動プラットフォームロボットです。ROS対応ロボットであり、オープンソースでROSのサンプルプログラムも多数公開しています。
 
 ---
 
