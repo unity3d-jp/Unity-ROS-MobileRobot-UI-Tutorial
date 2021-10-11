@@ -23,7 +23,7 @@
 
 ![](./images/step1-1.png)
 
-ROS-TCP-ConnectorのGitリポジトリへのURLを最新のタグを指定して入力し、`Add`をクリックします。2021年9月現在最新のタグは`v0.5.0`です。  
+ROS-TCP-ConnectorのGitリポジトリへのURLを最新のタグを指定して入力し、`Add`をクリックします。2021年9月現在最新のタグは`v0.5.0`です。
 この場合のGitリポジトリへのURLは `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector#v0.5.0` となります。
 
 メニューバーに`Robotics`というメニューが追加されます。メニューバーから`Robotics` -> `ROS Settings`を開き、以下の設定となっていることを確認します。
@@ -43,8 +43,8 @@ ROSで使われている定義ファイルをC#のスクリプトに変換しま
 
 変換にはROS-TCP-Connectorのメッセージ作成機能を用います。
 
-なお、この手順は今回のように使うROSのメッセージがROS-TCP-Connectorに予め含まれていない場合にのみ必要です。  
-（[STEP3](./step3.md)ではROS-TCP-Connectorに予め定義されているROSのメッセージ作成のみ使用しています。[STEP4](./step4.md)にて使用するメッセージを先に用意しておきます。）  
+なお、この手順は今回のように使うROSのメッセージがROS-TCP-Connectorに予め含まれていない場合にのみ必要です。
+（[STEP3](./step3.md)ではROS-TCP-Connectorに予め定義されているROSのメッセージ作成のみ使用しています。[STEP4](./step4.md)にて使用するメッセージを先に用意しておきます。）
 [`com.unity.robotics.ros-tcp-connector/Runtime/Messages`](https://github.com/Unity-Technologies/ROS-TCP-Connector/tree/main/com.unity.robotics.ros-tcp-connector/Runtime/Messages)から予めUnity用に用意されているROSのメッセージ形式を確認できます。
 
 メニューバーから`Robotics` -> `Generate ROS Messages...`を選択します。
@@ -261,5 +261,5 @@ roslaunch ros_tcp_endpoint endpoint.launch
 ---
 
 * [目次](./intro2.md)
-* [STEP2](./step2.md)
-* [STEP4](./step4.md)
+* < [STEP2](./step2.md)
+* \> [STEP4](./step4.md)

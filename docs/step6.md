@@ -56,7 +56,7 @@
 [STEP5](./step5.md)で可視化したオドメトリに加えてLiDARデータを可視化することができました。
 
 `Assets/PointCloud/Scripts/PointCloudLocator.cs`の`private static readonly int MaxPointCount = 100;`を書き換えることで
-描画する点群の数を変えることができます。  
+描画する点群の数を変えることができます。
 
 ### 本STEPのまとめ
 
@@ -68,5 +68,5 @@ LiDARデータ受信用スクリプトとLiDARデータ描画用スクリプト�
 ---
 
 * [目次](./intro2.md)
-* [STEP5](./step5.md)
-* [STEP7](./step7.md)
+* < [STEP5](./step5.md)
+* \> [STEP7](./step7.md)

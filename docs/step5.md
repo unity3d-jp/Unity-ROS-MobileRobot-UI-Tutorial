@@ -73,5 +73,5 @@
 ---
 
 * [目次](./intro2.md)
-* [STEP4](./step4.md)
-* [STEP6](./step6.md)
+* < [STEP4](./step4.md)
+* \> [STEP6](./step6.md)

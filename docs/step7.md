@@ -31,7 +31,7 @@ Hierarchyウィンドウの`Canvas`オブジェクトの子オブジェクトと
 ![](./images/step7-3.png)
 
 `RawImage`オブジェクトについてInspectorウィンドウから表示位置を変更します。
-`Rect Transform`コンポーネントのAnchor Presetsは右下寄せになるright-bottomを選択します。  
+`Rect Transform`コンポーネントのAnchor Presetsは右下寄せになるright-bottomを選択します。
 Pos X, Pos Y, Pos Z, Width, Heightはそれぞれ-110, 440, 0, 200, 200にします。
 
 ![](./images/step7-4.png)
@@ -73,7 +73,7 @@ roslaunch ros_tcp_endpoint endpoint.launch
 
 カメラデータ受信用スクリプトとカメラデータ描画用オブジェクトを追加し、カメラデータを可視化する方法を紹介しました。
 
-## 終わりに
+# 終わりに
 
 「UnityとROSで学ぶ移動ロボット入門 UI作成編」のチュートリアルは以上です。
 本教材の内容を応用したオリジナル作品の作成や、
@@ -87,4 +87,4 @@ roslaunch ros_tcp_endpoint endpoint.launch
 ---
 
 * [目次](./intro2.md)
-* [STEP6](./step6.md)
+* < [STEP6](./step6.md)

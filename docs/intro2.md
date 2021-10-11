@@ -37,7 +37,7 @@ ROSのコマンドやその仕組み、Unityのインターフェース名称に
 
 ## 使用環境
 
-本教材ではPCを1台のみ使用し、ROS対応移動ロボットの操作用UIをUnity上で作成する方法を紹介します。  
+本教材ではPCを1台のみ使用し、ROS対応移動ロボットの操作用UIをUnity上で作成する方法を紹介します。
 今回はWindowsを想定していますが、適宜読み替えればmacOSやUbuntuでも動くはずです。
 
 ![](./images/intro2-1.png)
@@ -84,5 +84,5 @@ OSを入れ替えるわけではないので、デュアルブートの設定を
 ---
 
 * [目次](./intro2.md)
-* [INTRO1](./intro1.md)
-* [INTRO3](./intro3.md)
+* < [INTRO1](./intro1.md)
+* \> [INTRO3](./intro3.md)

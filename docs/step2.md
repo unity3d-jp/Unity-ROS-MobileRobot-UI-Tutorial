@@ -17,7 +17,7 @@
 
 ### 1. Worldデータを入手
 
-Worldデータをダウンロードし、その中のCOLLADAファイルをプロジェクト内の`Assets/Models`フォルダへ配置します。  
+Worldデータをダウンロードし、その中のCOLLADAファイルをプロジェクト内の`Assets/Models`フォルダへ配置します。
 今回はWorldデータを予め本プロジェクトと一緒にダウンロードしているのでコピーして配置します。
 
 まず、UnityのProjectパネルで、`Assets/Models`フォルダを作成します。
@@ -28,7 +28,7 @@ Worldデータをダウンロードし、その中のCOLLADAファイルをプ�
 
 ![](./images/step2-2.png)
 
-`ROS/src/raspimouse_sim/raspimouse_gazebo/models/cheeze_maze_a/meshes`フォルダ内の`maze.dae`を`Models`フォルダへコピーします。  
+`ROS/src/raspimouse_sim/raspimouse_gazebo/models/cheeze_maze_a/meshes`フォルダ内の`maze.dae`を`Models`フォルダへコピーします。
 
 ![](./images/step2-3.gif)
 
@@ -66,7 +66,7 @@ WorldデータをUnity上で読み込み、次のSTEP以降で使いやすいよ
 
 ## 本STEPのまとめ
 
-Worldデータを準備し、COLLADAファイルをUnityのプロジェクトにインポートする方法を紹介しました。  
+Worldデータを準備し、COLLADAファイルをUnityのプロジェクトにインポートする方法を紹介しました。
 さらに可視化のためのモデルとカメラアングルの微調整方法を紹介しました。
 
 ※WorldデータがCOLLADAファイルでない場合は[STEP1](./step1.md)で紹介したURDF-Importerと[pysdf](https://github.com/andreasBihlmaier/pysdf)を併用するなどの工夫が必要になりますが、様々なパターンがありますのでここでは割愛します。
@@ -76,5 +76,5 @@ Worldデータを準備し、COLLADAファイルをUnityのプロジェクトに
 ---
 
 * [目次](./intro2.md)
-* [STEP1](./step1.md)
-* [STEP3](./step3.md)
+* < [STEP1](./step1.md)
+* \> [STEP3](./step3.md)

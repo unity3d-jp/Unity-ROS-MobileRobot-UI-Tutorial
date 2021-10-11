@@ -23,7 +23,7 @@ Hierarchyウィンドウを右クリックして`Create Empty`を選択し、`Su
 ![](./images/step4-5.png)
 
 
-作成した`Subscriber`オブジェクトに`Assets/Scripts/TfSubscriber.cs`スクリプトをアタッチします。  
+作成した`Subscriber`オブジェクトに`Assets/Scripts/TfSubscriber.cs`スクリプトをアタッチします。
 （`Hierarchy`ウィンドウからGameObjectを選択してInspectorウィンドウ上で任意のスクリプト コンポーネントを追加することも可能です。）
 
 ![](./images/step4-6.gif)
@@ -51,7 +51,7 @@ Inspectorウィンドウで`Tf Subscriber`コンポーネントの`Mobile Robot`
 
 ![](./images/step4-9.gif)
 
-Consoleを見ると位置姿勢の受信結果と座標変換のデバッグログを確認できます。  
+Consoleを見ると位置姿勢の受信結果と座標変換のデバッグログを確認できます。
 ROSとUnityでは座標系が異なるため、この差分を吸収するために`TfSubscriber.cs`スクリプト内で座標変換をしています。
 座標変換については次の「位置姿勢の表現方法とROSとUnityにおける座標系の違い」を参照してください。
 
@@ -85,5 +85,5 @@ Gazebo上のロボットの位置姿勢をUnity上で表示じて可視化する
 ---
 
 * [目次](./intro2.md)
-* [STEP3](./step3.md)
-* [STEP5](./step5.md)
+* < [STEP3](./step3.md)
+* \> [STEP5](./step5.md)

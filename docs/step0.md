@@ -30,14 +30,14 @@ Unityプロジェクトの作成とROSがインストールされたDockerイメ
 
 ![](./images/step0-3.png)
 
-PowerShellで以下のコマンドを実行します。  
+PowerShellで以下のコマンドを実行します。
 PowerShellでは右クリックでクリップボードの内容（コピーしたコマンド）を貼り付けることができます。
 
 ```sh
 docker build -t raspimouse-unity:latest .
 ```
 
-構築中はログが出力されます。  
+構築中はログが出力されます。
 初回は構築に時間がかかる場合があります。PCのスペックやネットワークに左右されますが5分程度かかる場合がありました。
 
 この間、次の[STEP1](./step1.md)を進めておくこともできます。
@@ -61,5 +61,5 @@ Unityプロジェクトの作成方法とROSがインストールされたDocker
 ---
 
 * [目次](./intro2.md)
-* [INTRO3](./intro3.md)
-* [STEP1](./step1.md)
+* < [INTRO3](./intro3.md)
+* \> [STEP1](./step1.md)
