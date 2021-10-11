@@ -1,35 +1,35 @@
 # UnityとROSで学ぶ移動ロボット入門 UI作成編
 
+![](./docs/images/intro0-1.png)
 本教材は Unity と ROS を組み合わせたロボット開発のための入門用教材です。
 
 ## 1. はじめるための準備
 
-本教材は、[Git](https://git-scm.com/) を使用してお手元の環境に取得してお使い下さい。
+本教材は、[Git](https://git-scm.com/) を使用してお手元の環境に複製してお使い下さい。
 
-* Gitを使うのが初めての方は、「Git Windows 使い方」 などのキーワードでネット検索すると多くの情報が得られます。
+* Gitを使うのが初めての方は、「Git Windows 使い方」 などのキーワードでネット検索すると多くの情報が得られますので参考にしてみて下さい。
 
 Gitがインストールできたら、Git Bash、コマンドプロンプト または Power Shell などから以下のコマンド順番に実行して行きます。
 
 ### 1-1. GitHub からファイルを一式を取得する
 
-GitHub からファイルを一式を取得(clone)します。
+GitHub からファイルを一式を複製(clone)します。
 ```
-$ git clone https://github.com/unity3d-jp/Unity-ROS-MobileRobot-UI-Tutorial.git
+git clone https://github.com/unity3d-jp/Unity-ROS-MobileRobot-UI-Tutorial.git
 ```
-* ここで左端の `$` はシステムがユーザーの入力を促していることを表す記号で皆さんが入力する必要はありません。また、お使いの環境によっては `$` の他に `>` などの場合もあります。
 
 ### 1-2. 作業フォルダに移動する
 ```
-$ cd Unity-ROS-MobileRobot-UI-Tutorial
+cd Unity-ROS-MobileRobot-UI-Tutorial
 ```
 
 ### 1-3. ROS-TCP-Endpoint を取り込む
 
 以下のコマンドを使って、`ROS-TCP-Endpoint` を取り込みます。
 ```
-$ git submodule update --init --recursive
+git submodule update --init --recursive
 ```
-* `ROS-TCP-Endpoint` の説明は後で出てきます。
+* `ROS-TCP-Endpoint` の説明は後ほど出てきます。
 
 以上で、必要なファイル一式が `Unity-ROS-MobileRobot-UI-Tutorial` フォルダの中に格納されました。
 
