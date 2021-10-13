@@ -83,6 +83,9 @@ roslaunch ros_tcp_endpoint endpoint.launch
 これから先、Raspberry Pi Mouse以外のロボットを試してみたり、Unity Asset Storeなどで公開されているアセットを組み合わせてカスタマイズしてオリジナルUIにチャレンジしたり、
 みなさんがROS対応移動ロボットとUnityを組み合わせてUIを制作する際の一助となれば幸いです。
 
+# 謝辞
+
+本教材の開発の開発にあたり多大なるご協力をを頂いた株式会社アールティの皆様に深く感謝し、厚くお礼申し上げます。
 
 ---
 
