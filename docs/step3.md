@@ -211,6 +211,11 @@ Unityで再生ボタンを押し、再生モードでプロジェクトを実行
 Connection to 127.0.0.1:10000 failed - System.Net.Sockets.SocketException (0x80004005): 対象のコンピューターによって拒否されたため、接続できませんでした。
 ```
 
+再生モード中の画面表示が小さい場合は、Gameビューの`Low Resolution Aspect Ratios`のチェックを外して下さい。
+
+![](./images/step3-26-1.png)
+
+
 ### 7. Gazeboシミュレータを起動
 
 先程まで開いていたWebブラウザでLXTerminalを2つ起動します。

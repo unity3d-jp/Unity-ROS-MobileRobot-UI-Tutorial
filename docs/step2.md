@@ -47,9 +47,20 @@ WorldデータをUnity上で読み込み、次のSTEP以降で使いやすいよ
 
 ![](./images/step2-5.png)
 
-ここでRaspberry Pi Mouseが迷路に埋もれないよう`raspimouse`オブジェクトをX軸方向に0.3ほどずらしておきます。
+mazeのTransformの各値は次のようにしておきます。(Rotation Yは-90であることに注意して下さい)
+
+![](./images/step2-5-1.png)
+
+また、ここでRaspberry Pi Mouseが迷路に埋もれないよう`raspimouse`オブジェクトをX軸方向に0.3ほどずらしておきます。
 
 ![](./images/step2-6.png)
+
+Worldの壁の影が離れた位置に出ている場合があるので調整します。
+![](./images/step2-6-1.png)
+
+`Directional Light`オブジェクトの`Light`の`Bias`を`0.01`にします。
+![](./images/step2-6-2.png)
+
 
 次にGameビューを調整するためにカメラのアングルを調整します。
 
