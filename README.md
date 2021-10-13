@@ -39,6 +39,8 @@ git submodule update --init --recursive
 
 ## 3. ライセンスについて
 
-本教材は [Apache License 2.0](./LICENSE-2.0.txt) で提供されています。(以下の3<sup>rd</sup>パーティ製ソフトウェアを除く)
+Copyright 2021 Unity Technologies Japan K.K.
+
+本教材は [Apache License 2.0](./LICENSE-2.0) です。(以下の3<sup>rd</sup>パーティ製ソフトウェアを除く)
 
 3<sup>rd</sup>パーティ製ソフトウェアについては [OSSライセンスに基づく表記](./THIRD-PARTY-LICENSE.md) を参照して下さい。
