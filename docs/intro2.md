@@ -3,7 +3,7 @@
 ## 目次
 
 * [本教材でできること](./intro0.md)
-* [Unityとロボットが連携してうれしいこと](./intro1.md)
+* [Unityとロボットが連携することの利点](./intro1.md)
 * [教材の構成](./intro2.md)
 * [Dockerのセットアップ](./intro3.md)
 * [UnityとROSのセットアップ](./step0.md)
