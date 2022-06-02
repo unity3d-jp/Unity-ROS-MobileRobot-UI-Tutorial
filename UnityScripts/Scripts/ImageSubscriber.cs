@@ -4,8 +4,7 @@ using Unity.Robotics.ROSTCPConnector;
 using CompressedImageMsg = RosMessageTypes.Sensor.CompressedImageMsg;
 
 /// <summary>
-/// LiDARスキャンデータ（LaserScanMsg）を受信するためのクラス
-/// 主にスキャンデータの取得および座標変換に使い、描画は別のスクリプトを用意することを想定
+/// カメラデータ（CompressedImageMsg）を受信し、描画するためのクラス
 /// </summary>
 public class ImageSubscriber : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class ImageSubscriber : MonoBehaviour
     [SerializeField] RawImage rawImage;
 
     private Texture2D texture2D;
-    private byte[] imageData;
+    private CameraImage cameraImage = new CameraImage();
     private bool isMessageReceived;
 
     /// <summary>
@@ -47,12 +46,15 @@ public class ImageSubscriber : MonoBehaviour
     /// </summary>
     void ImageMsgUpdate(CompressedImageMsg rawImage)
     {
-        imageData = rawImage.data;
-        isMessageReceived = true;
-        if (isDebugMode)
+        lock (cameraImage)
         {
-            Debug.Log("rawImage recieved. length :" + System.Buffer.ByteLength(imageData));
+            cameraImage.imageData = rawImage.data;
+            if (isDebugMode)
+            {
+                Debug.Log("rawImage recieved. length :" + System.Buffer.ByteLength(cameraImage.imageData));
+            }
         }
+        isMessageReceived = true;
     }
 
     /// <summary>
@@ -60,9 +62,20 @@ public class ImageSubscriber : MonoBehaviour
     /// </summary>
     void ProcessMessage()
     {
-        texture2D.LoadImage(imageData);
-        texture2D.Apply();
+        lock (cameraImage)
+        {
+            texture2D.LoadImage(cameraImage.imageData);
+            texture2D.Apply();
+        }
         rawImage.texture = texture2D;
         isMessageReceived = false;
     }
+}
+
+/// <summary>
+/// アクセス制限用のカメライメージデータ格納配列
+/// </summary>
+class CameraImage
+{
+    public byte[] imageData { get; set; }
 }

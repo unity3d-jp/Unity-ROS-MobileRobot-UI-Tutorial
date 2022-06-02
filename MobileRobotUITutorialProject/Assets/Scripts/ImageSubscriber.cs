@@ -77,5 +77,5 @@ public class ImageSubscriber : MonoBehaviour
 /// </summary>
 class CameraImage
 {
-    public byte[] imageData　{ get; set; }
+    public byte[] imageData { get; set; }
 }
