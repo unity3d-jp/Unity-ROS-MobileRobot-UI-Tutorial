@@ -7,7 +7,6 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./src/ros_tcp_endpoint $ROS_WORKSPACE/src/ros_tcp_endpoint
-COPY ./src/tf2_msgs $ROS_WORKSPACE/src/tf2_msgs
 COPY ./src/raspimouse_sim $ROS_WORKSPACE/src/raspimouse_sim
 COPY ./src/raspimouse_description $ROS_WORKSPACE/src/raspimouse_description
 COPY ./configure.sh /home/ubuntu/configure.sh
