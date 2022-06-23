@@ -6,8 +6,8 @@ Unityプロジェクトの作成とROSがインストールされたDockerイメ
 
 ## 動作確認済環境
 
-* Windows 10 Home バージョン 20H2
-* Unity 2020.3.17f
+* Windows 10 Home バージョン 21H2
+* Unity 2021.3.4f1
 
 ## Unityプロジェクトの作成
 
@@ -23,7 +23,7 @@ Unityプロジェクトの作成とROSがインストールされたDockerイメ
 
 次はDockerイメージの構築に進みます。
 
-## Dockerイメージの構築
+## Dockerイメージの構築（Docker Desktopの場合）
 
 `ROS`フォルダの中でPowerShellを起動します。
 エクスプローラで`ROS`フォルダを開き、Shiftキーを押しながら右クリックして「PowerShell ウィンドウをここで開く」を選択します。
@@ -48,6 +48,34 @@ docker build -t raspimouse-unity:latest .
 
 ```
  => => naming to docker.io/library/raspimouse-unity:latest   0.0s
+```
+
+以上でROSがインストールされたDockerイメージの構築は完了です。
+
+## Dockerイメージの構築（WSL 2のDockerの場合）
+
+`ROS`フォルダの中でLinux シェルを起動します。
+エクスプローラで`ROS`フォルダを開き、Shiftキーを押しながら右クリックして「Linux シェルをここで開く」を選択します。
+
+![](./images/step0-3.png)
+
+Linux シェルで以下のコマンドを実行します。
+Linux シェルでは右クリックでクリップボードの内容（コピーしたコマンド）を貼り付けることができます。
+
+```sh
+docker build -t raspimouse-unity:latest .
+```
+
+構築中はログが出力されます。
+初回は構築に時間がかかる場合があります。PCのスペックやネットワークに左右されますが5分程度かかる場合がありました。
+
+この間、次の[STEP1](./step1.md)を進めておくこともできます。
+
+以下のようなメッセージが出力されていればイメージ作成が正常に完了しています。
+
+
+```
+Successfully tagged raspimouse-unity:latest
 ```
 
 以上でROSがインストールされたDockerイメージの構築は完了です。

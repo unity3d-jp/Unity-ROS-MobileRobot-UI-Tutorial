@@ -10,8 +10,8 @@
 
 ## 動作確認済環境
 
-* Windows 10 Home バージョン 20H2
-* Unity 2020.3.17f
+* Windows 10 Home バージョン 21H2
+* Unity 2021.3.4f1
 
 ## 手順
 
