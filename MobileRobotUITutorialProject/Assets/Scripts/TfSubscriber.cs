@@ -33,7 +33,7 @@ public class TfSubscriber : MonoBehaviour
     void Start()
     {
         // // Get ROS connection static instance
-        ROSConnection.instance.Subscribe<Tf>(rosTopicName, TfUpdate);
+        ROSConnection.GetOrCreateInstance().Subscribe<Tf>(rosTopicName, TfUpdate);
 
         robotLinkPositions = new Transform[numRobotLinks];
 

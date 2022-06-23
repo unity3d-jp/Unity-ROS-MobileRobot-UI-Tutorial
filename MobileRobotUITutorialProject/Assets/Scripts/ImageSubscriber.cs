@@ -25,7 +25,7 @@ public class ImageSubscriber : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ROSConnection.instance.Subscribe<CompressedImageMsg>(rosTopicName, ImageMsgUpdate);
+        ROSConnection.GetOrCreateInstance().Subscribe<CompressedImageMsg>(rosTopicName, ImageMsgUpdate);
         texture2D = new Texture2D(1, 1);
     }
 
