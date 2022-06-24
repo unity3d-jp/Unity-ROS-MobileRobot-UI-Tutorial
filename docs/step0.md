@@ -57,7 +57,7 @@ docker build -t raspimouse-unity:latest .
 `ROS`フォルダの中でLinux シェルを起動します。
 エクスプローラで`ROS`フォルダを開き、Shiftキーを押しながら右クリックして「Linux シェルをここで開く」を選択します。
 
-![](./images/step0-3.png)
+![](./images/step0-5.png)
 
 Linux シェルで以下のコマンドを実行します。
 Linux シェルでは右クリックでクリップボードの内容（コピーしたコマンド）を貼り付けることができます。
@@ -73,10 +73,11 @@ docker build -t raspimouse-unity:latest .
 
 以下のようなメッセージが出力されていればイメージ作成が正常に完了しています。
 
-
 ```
 Successfully tagged raspimouse-unity:latest
 ```
+
+![](./images/step0-6.png)
 
 以上でROSがインストールされたDockerイメージの構築は完了です。
 
