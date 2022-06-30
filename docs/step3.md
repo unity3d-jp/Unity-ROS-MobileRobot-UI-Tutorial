@@ -8,10 +8,10 @@
 
 ## 動作確認済環境
 
-* Windows 10 Home バージョン 20H2
-* Unity 2020.3.17f
-* [Unity-Technologies/ROS-TCP-Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector) v0.5.0
-* Docker Desktop 3.6.0
+* Windows 10 Home バージョン 21H2
+* Unity 2021.3.4f1
+* [Unity-Technologies/ROS-TCP-Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector) v0.7.0
+* Docker Desktop 4.9.1
 
 ## 手順
 
@@ -23,8 +23,9 @@
 
 ![](./images/step1-1.png)
 
-ROS-TCP-ConnectorのGitリポジトリへのURLを最新のタグを指定して入力し、`Add`をクリックします。2021年9月現在最新のタグは`v0.5.0`です。
-この場合のGitリポジトリへのURLは `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector#v0.5.0` となります。
+ROS-TCP-ConnectorのGitリポジトリへのURLを最新のタグを指定して入力し、`Add`をクリックします。2022年6月現在最新のタグは`v0.7.0`です。
+この場合のGitリポジトリへのURLは `https://github.com/Unity-Technologies/ROS-TCP-Connector.git?path=/com.unity.robotics.ros-tcp-connector#v0.7.0` となります。
+※今後のバージョンアップによって使い方が変わる可能性があります。本チュートリアルでは「動作確認環境」に記載のバージョンでのみ動作確認をしています。
 
 メニューバーに`Robotics`というメニューが追加されます。メニューバーから`Robotics` -> `ROS Settings`を開き、以下の設定となっていることを確認します。
 
@@ -34,37 +35,7 @@ ROS-TCP-ConnectorのGitリポジトリへのURLを最新のタグを指定して
 * ROS Port: 10000
 * Show HUD: True
 
-![](./images/step3-14.png)
-
-### 2. ROSのメッセージファイル作成
-
-UnityでROSから配信されるロボットの位置姿勢を受信するために、配信されているメッセージの形式をUnityプロジェクトで扱えるようにします。
-ROSで使われている定義ファイルをC#のスクリプトに変換します。
-
-変換にはROS-TCP-Connectorのメッセージ作成機能を用います。
-
-なお、この手順は今回のように使うROSのメッセージがROS-TCP-Connectorに予め含まれていない場合にのみ必要です。
-（[STEP3](./step3.md)ではROS-TCP-Connectorに予め定義されているROSのメッセージ作成のみ使用しています。[STEP4](./step4.md)にて使用するメッセージを先に用意しておきます。）
-[`com.unity.robotics.ros-tcp-connector/Runtime/Messages`](https://github.com/Unity-Technologies/ROS-TCP-Connector/tree/main/com.unity.robotics.ros-tcp-connector/Runtime/Messages)から予めUnity用に用意されているROSのメッセージ形式を確認できます。
-
-メニューバーから`Robotics` -> `Generate ROS Messages...`を選択します。
-
-![](./images/step4-1.png)
-
-`ROS message path`を指定します。
-[`ROS/src`](../ROS/src)フォルダを指定します。
-
-![](./images/step4-2.png)
-
-`tf2_msgs/msg/TFMessage.msg`を選択して`Build msg`をクリックします。
-
-![](./images/step4-3.png)
-
-以上でROSのメッセージファイル作成は完了です。Unityプロジェクト内の`Assets/RosMessages`フォルダに`Tf2/msg/TFMessageMsg.cs`というスクリプトが作成されています。
-
-![](./images/step4-4.png)
-
-### 3. ロボット操作用ボタンを作成
+### 2. ロボット操作用ボタンを作成
 
 Hierarchyウィンドウを右クリックして`UI`->`Panel`を選択します。
 
@@ -113,7 +84,7 @@ Pos X, Pos Y, Pos Z, Width, Heightはそれぞれ0, 100, 0, 100, 100にします
 ![](./images/step3-10.png)
 ![](./images/step3-11.png)
 
-### 4. 操作用ボタンにイベントを登録
+### 3. 操作用ボタンにイベントを登録
 
 次に作成したボタンにイベントを登録します。
 
@@ -175,9 +146,9 @@ Pos X, Pos Y, Pos Z, Width, Heightはそれぞれ0, 100, 0, 100, 100にします
 それぞれ`CmdVelPublisher.SetLeftTurnVel`と`CmdVelPublisher.SetRightTurnVel`を指定します。
 
 以上で4つのボタンへのイベントの登録が完了です。
-### 5. ROS環境を起動
+### 4. ROS環境を起動
 
-PowerShellを起動してDockerコンテナを起動します。
+PowerShell/Linux シェルを起動してDockerコンテナを起動します。
 
 ```
 docker run --rm -it -p 10000:10000 -p 5005:5005 -p 6080:80 --shm-size=512m raspimouse-unity:latest
@@ -195,17 +166,21 @@ Webブラウザを開き[http://127.0.0.1:6080](http://127.0.0.1:6080)にアク�
 
 ![](./images/step3-24.png)
 
-### 6. 再生モードでUnityプロジェクトを実行
+### 5. 再生モードでUnityプロジェクトを実行
 
 Unityで再生ボタンを押し、再生モードでプロジェクトを実行します。
 
 ![](./images/step3-25.png)
 
-この状態で操作ボタンの動作確認をしてみます。ボタンを押すと左上の`Last Message Sent`の欄が更新されているのが確認できます。
+この状態で操作ボタンの動作確認をしてみます。ボタンを押すと左上の`Last Message Sent`の欄が更新されているのが確認できます。  
 
 ![](./images/step3-26.gif)
 
-この間以下のようなメッセージが出ますが、無視して問題ありません。
+※ROS-TCP-Connectorのバージョンによっては以下の画像のようにデバッグ用の詳細情報が表示されない場合もあります。
+
+![](./images/step3-31.png)
+
+この間以下のようなメッセージがUnityのコンソールに出る場合もありますが、無視して問題ありません。  
 
 ```
 Connection to 127.0.0.1:10000 failed - System.Net.Sockets.SocketException (0x80004005): 対象のコンピューターによって拒否されたため、接続できませんでした。
@@ -216,7 +191,7 @@ Connection to 127.0.0.1:10000 failed - System.Net.Sockets.SocketException (0x800
 ![](./images/step3-26-1.png)
 
 
-### 7. Gazeboシミュレータを起動
+### 6. Gazeboシミュレータを起動
 
 先程まで開いていたWebブラウザでLXTerminalを2つ起動します。
 

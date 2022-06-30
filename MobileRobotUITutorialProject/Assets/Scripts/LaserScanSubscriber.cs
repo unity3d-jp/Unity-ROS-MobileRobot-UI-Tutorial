@@ -27,7 +27,7 @@ public class LaserScanSubscriber : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ROSConnection.instance.Subscribe<LaserScanMsg>(rosTopicName, ScanUpdate);
+        ROSConnection.GetOrCreateInstance().Subscribe<LaserScanMsg>(rosTopicName, ScanUpdate);
     }
 
 

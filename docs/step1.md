@@ -11,9 +11,9 @@ Unityプロジェクトの新規作成までの手順は[STEP0](./step0.md)を�
 
 ## 動作確認済環境
 
-* Windows 10 Home バージョン 20H2
-* Unity 2020.3.17f
-* [Unity-Technologies/URDF-Importer](https://github.com/Unity-Technologies/URDF-Importer) v0.5.0
+* Windows 10 Home バージョン 21H2
+* Unity 2021.3.4f1
+* [Unity-Technologies/URDF-Importer](https://github.com/Unity-Technologies/URDF-Importer) v0.5.2
 
 ## 手順
 
@@ -25,8 +25,9 @@ Unityプロジェクトの新規作成までの手順は[STEP0](./step0.md)を�
 
 ![](./images/step1-1.png)
 
-URDF-ImporterのGitリポジトリへのURLを最新のタグを指定して入力し、`Add`をクリックします。2021年8月24日現在最新のタグは`v0.5.0`です。
-この場合のGitリポジトリへのURLは `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.0` となります。
+URDF-ImporterのGitリポジトリへのURLを最新のタグを指定して入力し、`Add`をクリックします。2022年6月現在最新のタグは`v0.5.2`です。
+この場合のGitリポジトリへのURLは `https://github.com/Unity-Technologies/URDF-Importer.git?path=/com.unity.robotics.urdf-importer#v0.5.2` となります。  
+※今後のバージョンアップによって使い方が変わる可能性があります。本チュートリアルでは「動作確認環境」に記載のバージョンでのみ動作確認をしています。
 
 ![](./images/step1-2.png)
 

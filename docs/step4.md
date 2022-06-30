@@ -7,10 +7,10 @@ Gazebo上のロボットの位置姿勢を取得し、Unity上に反映させる
 
 ## 動作確認済環境
 
-* Windows 10 Home バージョン 20H2
-* Unity 2020.3.17f
-* [Unity-Technologies/ROS-TCP-Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector) v0.5.0
-* Docker Desktop 3.6.0
+* Windows 10 Home バージョン 21H2
+* Unity 2021.3.4f1
+* [Unity-Technologies/ROS-TCP-Connector](https://github.com/Unity-Technologies/ROS-TCP-Connector) v0.7.0
+* Docker Desktop 4.9.1
 
 ## 手順
 

@@ -31,7 +31,8 @@ public class CmdVelPublisher : MonoBehaviour
     void Start()
     {
         // Get ROS connection static instance
-        ros = ROSConnection.instance;
+        ros = ROSConnection.GetOrCreateInstance();
+        ros.RegisterPublisher<TwistMsg>(topicName);
         SetStopVel();
         Publish();
     }
@@ -87,6 +88,6 @@ public class CmdVelPublisher : MonoBehaviour
     public void Publish()
     {
         // ROSのros_tcp_endpointのdefault_server_endpoint.pyにメッセージを送信
-        ros.Send(topicName, cmdVelMessage);
+        ros.Publish(topicName, cmdVelMessage);
     }
 }

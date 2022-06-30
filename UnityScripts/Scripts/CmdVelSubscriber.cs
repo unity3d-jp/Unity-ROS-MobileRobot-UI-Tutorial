@@ -20,7 +20,7 @@ public class CmdVelSubscriber : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ROSConnection.instance.Subscribe<TwistMsg>(rosTopicName, CmdVelUpdate);
+        ROSConnection.GetOrCreateInstance().Subscribe<TwistMsg>(rosTopicName, CmdVelUpdate);
     }
 
     /// <summary>
