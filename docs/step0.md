@@ -66,6 +66,12 @@ Linux シェルでは右クリックでクリップボードの内容（コピ�
 docker build -t raspimouse-unity:latest .
 ```
 
+もし`Cannot connect to the Docker daemon`などのエラーが出た場合は、INTRO3で紹介したコマンドでDockerのサービスを起動してから`docker build`を実行します。
+
+```
+sudo systemctl start docker
+```
+
 構築中はログが出力されます。
 初回は構築に時間がかかる場合があります。PCのスペックやネットワークに左右されますが5分程度かかる場合がありました。
 
