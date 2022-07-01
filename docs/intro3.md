@@ -20,18 +20,14 @@
 
 ### Docker Desktopの料金プランについて
 
-WindowsでDockerを使用する際に必要なDocker Desktopは個人使用や教育使用などの一定の条件を満たしている場合を除き、2022年2月から有料化されています（2022年6月現在）。
+WindowsでDockerを使用する際に必要なDocker Desktopは個人使用や教育使用などの一定の条件を満たしている場合を除き、2022年2月から有料化されています（2022年6月現在）。  
+詳細については関連リンクをご参照ください。
 
-> 4.2 Specific License Limitations – Docker Desktop.
-> 
-> (a) The Docker Desktop component of the Service at the level of the Personal Offering (as described on the Pricing Page) is further restricted to: (i) your “Personal Use”, (ii) your “Educational Use”, (iii) your use for a non-commercial open source project, and (iv) your use in a “Small Business Environment”.
-> 
-> (b) For purposes of this Section 4.2: (i) “Personal Use” is the use by an individual developer for personal use to develop free or paid applications, (ii) “Educational Use” is the use by members of an educational organization in a classroom learning environment for academic or research purposes or contribution to an open source project and (iii) a “Small Business Environment” is a commercial undertaking with fewer than 250 employees and less than US $10,000,000 (or equivalent local currency) in annual revenue.
->
-> https://www.docker.com/legal/docker-subscription-service-agreement/
- 
 
 #### 関連リンク
+
+* Docker Subscription Service Agreement 
+    * https://www.docker.com/legal/docker-subscription-service-agreement/
 
 > Docker Desktopが有料化へ、ただし250人未満かつ年間売り上げ1000万ドル（約11億円）未満の組織や個人やオープンソースプロジェクトでは引き続き無料で利用可能
 > https://www.publickey1.jp/blog/21/docker_desktop250100011.html
