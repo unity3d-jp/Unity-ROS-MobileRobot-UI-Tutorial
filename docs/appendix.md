@@ -108,7 +108,9 @@ Hierarchyの`Canvas`の子オブジェクトとして`Image`を作成します�
 
 ### 3. On-Screen Stick用のスクリプトを設定
 
-Hierarchyの`Publisher`の`CmdVelPublisher`のチェックを外します。
+まず準備として、`UnityScripts/JoyStick`フォルダをUnityプロジェクトの`Assets`フォルダにコピー（`Assets/JoyStick`として配置）します。
+
+次に、Hierarchyの`Publisher`の`CmdVelPublisher`のチェックを外します。
 
 さらに`Publisher`のAdd Componentを押して`OnScreenStickCmdVelPublisher`を追加します。
 
@@ -149,7 +151,7 @@ Hierarchyの`Canvas`の子オブジェクトとして、`UI` -> `Image`を作成
 - Width : 100
 - Height : 100
 
-また、画像で示すように`Source Image`に`UnityScript` -> `JoyStick` -> `Textures` -> `white_circle`を設定してください。
+また、画像で示すように`Source Image`に`Assets/JoyStick/Textures/white_circle.png`を設定してください。
 
 ![](./images/appendix-26.png)
 
