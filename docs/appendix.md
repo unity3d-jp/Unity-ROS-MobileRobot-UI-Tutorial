@@ -149,7 +149,7 @@ Hierarchyの`Canvas`の子オブジェクトとして、`UI` -> `Image`を作成
 - Width : 100
 - Height : 100
 
-また、画像で示すように`Source Image`に`Assets` -> `Resources` -> `white_circle`を設定してください。
+また、画像で示すように`Source Image`に`UnityScript` -> `JoyStick` -> `Textures` -> `white_circle`を設定してください。
 
 ![](./images/appendix-26.png)
 
