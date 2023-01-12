@@ -47,24 +47,23 @@ ROSのメッセージファイルをダウンロードしてきたフォルダ�
 
 ## JoystickによるRaspberry Pi Mouseの操作
 
-Input SystemのOn-Screen Stickを用いてスクリーン上にJoystickを作成し、Raspberry Pi Mouseを操作します。
+Input SystemのOn-Screen Stickを用いてスクリーン上にJoyStickを作成し、Raspberry Pi Mouseを操作します。
 
-### 1. Input Systemのインストール
+### 1. Input Systemの確認
 
-Package ManagerからInput Systemをインストールします。
+Package Managerを開いてInput Systemがインストールされているか確認します。
 
 メニューバーから `Window` -> `Package Manager` を選択します。
 
 ![](./images/appendix-13.png)
 
-`Package Manager`を開いたら、`Unity Registry`を選択して、`Input System`をインストールします。
+`Package Manager`を開いたら、`Unity Registry`を選択して、`Input System`にチェックマークが付いているか確認します。
+
+![](./images/appendix-28.png)
+
+もしもインストールされていない場合は、インストールを実行してください。
 
 ![](./images/appendix-14.png)
-
-次に示すような警告が表示されたらYesを選択します。
-すると自動的にUnityエディターが再起動されます。
-
-![](./images/appendix-15.png)
 
 ### 2. On-Screen Stickの配置と設定
 
