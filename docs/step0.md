@@ -52,6 +52,14 @@ docker build -t raspimouse-unity:latest .
 
 以上でROSがインストールされたDockerイメージの構築は完了です。
 
+※期間をあけて再度本チュートリアルを試している場合にはキャッシュが残っており、古いROSパッケージが参照されることがあります。  
+その場合は以下のコマンドで最新版のDockerイメージを構築することができます。
+
+```sh
+docker pull tiryoh/ros-desktop-vnc:melodic
+docker build --no-cache -t raspimouse-unity:latest .
+```
+
 ## Dockerイメージの構築（WSL 2のDockerの場合）
 
 `ROS`フォルダの中でLinux シェルを起動します。
@@ -86,6 +94,14 @@ Successfully tagged raspimouse-unity:latest
 ![](./images/step0-6.png)
 
 以上でROSがインストールされたDockerイメージの構築は完了です。
+
+※期間をあけて再度本チュートリアルを試している場合にはキャッシュが残っており、古いROSパッケージが参照されることがあります。  
+その場合は以下のコマンドで最新版のDockerイメージを構築することができます。
+
+```sh
+docker pull tiryoh/ros-desktop-vnc:melodic
+docker build --no-cache -t raspimouse-unity:latest .
+```
 
 ## 本STEPのまとめ
 
